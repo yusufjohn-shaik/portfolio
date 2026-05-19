@@ -39,10 +39,10 @@ export default function Home() {
         <Journey />
         <Experience />
         <CodingProfiles />
-        <GitHubStats />
-        <LeetCodeStats />
         <Certifications />
         <Blogs />
+        <GitHubStats />
+        <LeetCodeStats />
         <Contact />
         <CTA />
       </main>

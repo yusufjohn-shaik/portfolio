@@ -3,8 +3,8 @@ import FadeIn from '../animations/FadeIn'
 
 export default function CTA() {
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="section-padding">
+      <div className="max-w-3xl mx-auto text-center px-6">
         <FadeIn>
           <div
             className="rounded-3xl p-12 relative overflow-hidden"
