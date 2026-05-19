@@ -44,3 +44,5 @@ logs/
 .coverage
 htmlcov/
 .pytest_cache/
+
+.vercel
