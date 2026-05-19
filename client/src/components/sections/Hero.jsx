@@ -45,7 +45,7 @@ export default function Hero() {
           transition={{ delay: 0.1 }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-          CSE Student · Building in Public
+          CSE Student · Exploring technologies
         </motion.div>
 
         {/* Name */}
