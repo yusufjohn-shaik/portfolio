@@ -1,0 +1,27 @@
+import FadeIn from '../animations/FadeIn'
+
+const GITHUB_USERNAME = 'yusufjohn-shaik'
+
+export default function GitHubStats() {
+  return (
+    <section className="py-12 px-6">
+      <div className="max-w-4xl mx-auto">
+        <FadeIn className="flex flex-col gap-4 items-center">
+          {/* GitHub stats card via readme-stats */}
+          <img
+            src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&theme=transparent&hide_border=true&title_color=00f5ff&icon_color=a855f7&text_color=94a3b8&bg_color=00000000`}
+            alt="GitHub Stats"
+            className="max-w-full rounded-xl"
+            loading="lazy"
+          />
+          <img
+            src={`https://github-readme-streak-stats.herokuapp.com/?user=${GITHUB_USERNAME}&theme=transparent&hide_border=true&ring=00f5ff&fire=a855f7&currStreakLabel=00f5ff&sideLabels=94a3b8&dates=475569`}
+            alt="GitHub Streak"
+            className="max-w-full rounded-xl"
+            loading="lazy"
+          />
+        </FadeIn>
+      </div>
+    </section>
+  )
+}

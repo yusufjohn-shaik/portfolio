@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #00f5ff;
+    --color-secondary: #a855f7;
+    --color-accent: #ec4899;
+    --color-bg: #030712;
+    --color-surface: #0a0f1e;
+    --color-border: rgba(255,255,255,0.08);
+    --color-text: #f1f5f9;
+    --color-muted: #94a3b8;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-dark-900 text-slate-100 font-body;
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(0, 245, 255, 0.3);
+    color: #fff;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400;
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(0,245,255,0.5), rgba(168,85,247,0.5));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto relative p-8 sm:p-10 lg:p-12;
+    background: rgba(5, 8, 22, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+  }
+
+  .container-custom::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+  }
+
+  .container-custom::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    width: 12px;
+    height: 12px;
+    border-radius: 9999px;
+    background: #ff5f56;
+    box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f;
+  }
+
+  .container-custom > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300;
+    background: linear-gradient(135deg, #00f5ff, #a855f7);
+    color: #030712;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,245,255,0.3);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-lg font-semibold text-sm border border-cyan-500/30 text-cyan-400 transition-all duration-300;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-cyan-500/10;
+    transform: translateY(-2px);
+  }
+
+  .card {
+    @apply glass rounded-2xl p-6 transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply shadow-card-hover;
+    border-color: rgba(0,245,255,0.2);
+    transform: translateY(-4px);
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl text-slate-100 text-sm transition-all duration-300;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: rgba(0,245,255,0.5);
+    box-shadow: 0 0 0 3px rgba(0,245,255,0.1);
+  }
+
+  .tag {
+    @apply px-3 py-1 rounded-full text-xs font-medium;
+    background: rgba(0,245,255,0.1);
+    color: #00f5ff;
+    border: 1px solid rgba(0,245,255,0.2);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
