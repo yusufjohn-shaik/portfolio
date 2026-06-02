@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import AppRoutes from './routes/AppRoutes'
 import { ThemeProvider } from './context/ThemeContext'
 import { AppProvider } from './context/AppContext'
@@ -25,6 +26,7 @@ export default function App() {
     <ThemeProvider>
       <AppProvider>
         <AppInner />
+        <Analytics />
       </AppProvider>
     </ThemeProvider>
   )
