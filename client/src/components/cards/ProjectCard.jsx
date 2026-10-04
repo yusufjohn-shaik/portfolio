@@ -19,20 +19,45 @@ export default function ProjectCard({ project }) {
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-3 mb-4">
-          <div>
-            <h3 className="text-white font-semibold text-base leading-snug">{project.title}</h3>
-            <p className="text-xs text-slate-500 mt-1">{project.tagline}</p>
+          <div className="flex items-start gap-3">
+            {project.icon && (
+              <span
+                className="text-2xl p-2 rounded-xl flex-shrink-0"
+                style={{
+                  background: `${project.color || '#00f5ff'}15`,
+                  border: `1px solid ${project.color || '#00f5ff'}30`,
+                }}
+              >
+                {project.icon}
+              </span>
+            )}
+            <div>
+              <h3 className="text-white font-semibold text-base leading-snug">{project.title}</h3>
+              <p className="text-xs text-slate-400 mt-1">{project.tagline}</p>
+            </div>
           </div>
-          <span
-            className="text-xs px-2 py-1 rounded-md flex-shrink-0 font-mono"
-            style={{
-              background: 'rgba(0,245,255,0.08)',
-              border: '1px solid rgba(0,245,255,0.2)',
-              color: '#00f5ff',
-            }}
-          >
-            {project.year}
-          </span>
+          <div className="flex flex-col items-end gap-1 flex-shrink-0">
+            <span
+              className="text-[11px] px-2 py-0.5 rounded-md font-mono"
+              style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                color: '#94a3b8',
+              }}
+            >
+              {project.year}
+            </span>
+            {project.status === 'In Progress' ? (
+              <span className="inline-flex items-center gap-1 text-[10px] font-mono text-amber-400 px-2 py-0.5 rounded bg-amber-400/10 border border-amber-400/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                In Progress
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded bg-cyan-400/10 border border-cyan-400/20">
+                Completed
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Description */}
