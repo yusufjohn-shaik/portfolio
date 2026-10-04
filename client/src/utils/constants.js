@@ -26,12 +26,13 @@ export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/ap
 export const GITHUB_API = 'https://api.github.com'
 
 export const META = {
-  title: 'Your Name | Full Stack Developer',
+  title: 'Shaik Yusuf John | Full Stack Developer & CSE Student',
   description:
-    'Full Stack Developer specializing in React, Flask, and AI. Building elegant, performant web applications.',
-  keywords: 'full stack developer, react, flask, python, AI, portfolio',
-  author: 'Your Name',
-  ogImage: '/og-image.png',
+    'CSE Student and Full Stack Developer specializing in React, Flask, and building real-world applications. Check out my projects and coding profiles.',
+  keywords: 'Shaik Yusuf John, full stack developer, react, flask, python, tailwind, portfolio, software engineering',
+  author: 'Shaik Yusuf John',
+  siteUrl: 'https://yusufjohn-dev.vercel.app',
+  ogImage: '/profile.png',
 }
 
 export const ANIMATION_DURATION = {

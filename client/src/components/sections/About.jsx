@@ -96,19 +96,19 @@ export default function About() {
             <h3 className="text-white font-semibold mb-6 text-sm font-mono tracking-widest uppercase text-cyan-400">
               Currently Focused On
             </h3>
-            <div className="space-y-3">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
               {focuses.map((f, i) => (
                 <motion.div
                   key={f.label}
-                  className="flex items-center gap-3 p-3 rounded-xl transition-colors duration-200 cursor-default"
-                  style={{ background: 'rgba(255,255,255,0.02)' }}
-                  whileHover={{ background: 'rgba(0,245,255,0.05)', x: 4 }}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  className="flex items-center gap-3 p-3.5 rounded-xl transition-colors duration-200 cursor-default"
+                  style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}
+                  whileHover={{ background: 'rgba(0,245,255,0.05)', borderColor: 'rgba(0,245,255,0.2)', x: 2 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: i * 0.06 }}
                 >
-                  <span className="text-lg">{f.icon}</span>
+                  <span className="text-xl p-1.5 rounded-lg bg-white/[0.04]">{f.icon}</span>
                   <span className="text-slate-300 text-sm font-medium">{f.label}</span>
                 </motion.div>
               ))}

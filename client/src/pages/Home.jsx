@@ -9,21 +9,17 @@ import Projects from '../components/sections/Projects'
 import Journey from '../components/sections/Journey'
 import Experience from '../components/sections/Experience'
 import CodingProfiles from '../components/sections/CodingProfiles'
-import GitHubStats from '../components/sections/GitHubStats'
-import LeetCodeStats from '../components/sections/LeetCodeStats'
 import Certifications from '../components/sections/Certifications'
-import Blogs from '../components/sections/Blogs'
 import Contact from '../components/sections/Contact'
-import CTA from '../components/sections/CTA'
 
 export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Shaik Yusuf John | Frontend Developer & CSE Student</title>
+        <title>Shaik Yusuf John | Full Stack Developer & CSE Student</title>
         <meta
           name="description"
-          content="CSE student focused on frontend development, DSA, Flask and AI exploration. Building real-world projects."
+          content="CSE student focused on full stack development with React and Flask, DSA problem solving, and modern web engineering."
         />
         <meta name="author" content="Shaik Yusuf John" />
       </Helmet>
@@ -37,14 +33,10 @@ export default function Home() {
         <Skills />
         <Projects />
         <Journey />
-        <Experience />
         <CodingProfiles />
+        <Experience />
         <Certifications />
-        <Blogs />
-        <GitHubStats />
-        <LeetCodeStats />
         <Contact />
-        <CTA />
       </main>
 
       <Footer />

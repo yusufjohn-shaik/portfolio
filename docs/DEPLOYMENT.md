@@ -51,7 +51,7 @@ MAIL_PASSWORD=your-gmail-app-password
 GITHUB_USERNAME=yusufjohn-shaik
 GITHUB_TOKEN=your_token
 LEETCODE_USERNAME=shaikyusufjohn
-ALLOWED_ORIGINS=https://your-portfolio.vercel.app
+ALLOWED_ORIGINS=https://yusufjohn-dev.vercel.app
 FLASK_DEBUG=False
 ```
 

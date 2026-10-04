@@ -45,7 +45,7 @@ export default function Hero() {
           transition={{ delay: 0.1 }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-          CSE Student · Exploring technologies
+          Available for Internships · CSE Student
         </motion.div>
 
         {/* Name */}
@@ -73,10 +73,9 @@ export default function Hero() {
         >
           <AnimatedText
             sequences={[
-              'Frontend Developer', 2000,
-              'Flask Backend Developer', 2000,
-              'DSA Practitioner', 2000,
-              'AI Explorer', 2000,
+              'Full Stack Developer', 2500,
+              'React & Flask Builder', 2500,
+              'DSA Practitioner', 2500,
             ]}
             className="text-cyan-400"
           />
@@ -84,7 +83,7 @@ export default function Hero() {
 
         {/* Tagline */}
         <motion.p
-          className="text-slate-500 text-sm font-mono tracking-wide mb-10"
+          className="text-slate-500 text-sm font-mono tracking-wide mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
@@ -99,8 +98,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          Computer Science Engineering student focused on frontend development,
-          DSA and building real-world full stack applications.
+          I build modern, performant web applications with React and Python/Flask,
+          with a strong focus on data structures, algorithms, and clean architecture.
         </motion.p>
 
         {/* CTA buttons */}

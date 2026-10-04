@@ -1,32 +1,35 @@
 export const certifications = [
   {
     id: 1,
-    title: 'LeetCode 50 Days Badge 2026',
+    title: 'LeetCode 50 Days Badge',
     issuer: 'LeetCode',
     date: '2026',
     credentialId: null,
     verifyUrl: 'https://leetcode.com/u/shaikyusufjohn/',
     color: '#ffa116',
-    tags: ['DSA', 'Problem Solving'],
-    description: 'Earned for maintaining consistent daily problem solving for 50 days on LeetCode.',
+    tags: ['DSA', 'Problem Solving', 'Algorithms'],
+    description: 'Awarded for maintaining consistent daily problem solving for 50 days on LeetCode.',
   },
-
   {
-    id: 3,
-    title: 'Python & Flask Backend Development',
-    issuer: 'Self-Directed (Project-Based)',
+    id: 2,
+    title: 'HackSprint 2K25 Participant',
+    issuer: 'HackSprint Hackathon',
     date: '2025',
     credentialId: null,
     verifyUrl: 'https://github.com/yusufjohn-shaik',
-    color: '#3776ab',
-    tags: ['Python', 'Flask', 'Backend'],
-    description: 'Built backend systems including authentication and REST APIs using Python and Flask.',
+    color: '#ec4899',
+    tags: ['Rapid Prototyping', 'Teamwork', 'Full Stack'],
+    description: 'Collaborative product development and rapid software building under intense hackathon deadlines.',
   },
-]
-
-export const upcomingCerts = [
-  'React Advanced Certification',
-  'Full Stack Development Certification',
-  'AI & Machine Learning Certifications',
-  'Cloud and Deployment Certifications',
+  {
+    id: 3,
+    title: 'Full Stack Web Engineering',
+    issuer: 'Hands-on Projects & Open Source',
+    date: '2025 – 2026',
+    credentialId: null,
+    verifyUrl: 'https://github.com/yusufjohn-shaik',
+    color: '#00f5ff',
+    tags: ['React', 'Flask', 'Vite', 'Tailwind'],
+    description: 'Architected and deployed production-ready applications across frontend and backend stacks.',
+  },
 ]
