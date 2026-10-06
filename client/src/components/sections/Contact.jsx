@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaGithub, FaEnvelope } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
-import { FiSend } from 'react-icons/fi'
+import { FiSend, FiCheckCircle } from 'react-icons/fi'
+import { useForm, ValidationError } from '@formspree/react'
 import toast from 'react-hot-toast'
 import SectionTitle from '../ui/SectionTitle'
 import FadeIn from '../animations/FadeIn'
-import { contactApi } from '../../services/contactApi'
 
 const iconMap = { FaGithub, FaEnvelope, SiLeetcode }
 
@@ -17,30 +17,13 @@ const contactLinks = [
 ]
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [loading, setLoading] = useState(false)
+  const [state, handleSubmit] = useForm('xwlvvpew')
 
-  const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
-
-  const handleSubmit = async e => {
-    e.preventDefault()
-    if (!form.name || !form.email || !form.message) {
-      toast.error('Please fill in all fields.')
-      return
+  useEffect(() => {
+    if (state.succeeded) {
+      toast.success('Message sent successfully!')
     }
-    setLoading(true)
-    try {
-      await contactApi.sendMessage(form)
-      toast.success('Message sent!')
-      setForm({ name: '', email: '', message: '' })
-    } catch {
-      // Fallback — open email client
-      window.location.href = `mailto:yusufjohn252007@gmail.com?subject=Message from ${form.name}&body=${form.message}`
-      toast.success('Opening your email client...')
-    } finally {
-      setLoading(false)
-    }
-  }
+  }, [state.succeeded])
 
   return (
     <section id="contact" className="section-padding">
@@ -98,58 +81,93 @@ export default function Contact() {
 
           {/* Right — form */}
           <FadeIn direction="right" delay={0.1}>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {[
-                { name: 'name', label: 'Name', type: 'text', placeholder: 'Your name' },
-                { name: 'email', label: 'Email', type: 'email', placeholder: 'you@example.com' },
-              ].map(field => (
-                <div key={field.name}>
-                  <label className="block text-xs text-slate-500 mb-2 font-medium">{field.label}</label>
+            {state.succeeded ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="rounded-2xl p-8 sm:p-10 text-center flex flex-col items-center justify-center min-h-[360px]"
+                style={{
+                  background: 'rgba(0,245,255,0.03)',
+                  border: '1px solid rgba(0,245,255,0.2)',
+                }}
+              >
+                <div className="w-14 h-14 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center mb-4 text-2xl font-bold">
+                  <FiCheckCircle size={28} />
+                </div>
+                <h3 className="text-white font-semibold text-lg mb-2">Message Sent!</h3>
+                <p className="text-slate-400 text-sm max-w-sm mb-6 leading-relaxed">
+                  Thank you for reaching out! Your message was delivered directly to my inbox via Formspree, and I will get back to you soon.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => window.location.reload()}
+                  className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 hover:text-cyan-300 underline underline-offset-4 transition-colors"
+                >
+                  Send another message →
+                </button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-xs text-slate-500 mb-2 font-medium">Name</label>
                   <input
-                    type={field.type}
-                    name={field.name}
-                    value={form[field.name]}
-                    onChange={handleChange}
-                    placeholder={field.placeholder}
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
                     className="input-field"
                     required
                   />
+                  <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-400 text-xs mt-1" />
                 </div>
-              ))}
 
-              <div>
-                <label className="block text-xs text-slate-500 mb-2 font-medium">Message</label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="What's on your mind?"
-                  rows={5}
-                  className="input-field resize-none"
-                  required
-                />
-              </div>
+                <div>
+                  <label htmlFor="email" className="block text-xs text-slate-500 mb-2 font-medium">Email Address</label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    className="input-field"
+                    required
+                  />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-400 text-xs mt-1" />
+                </div>
 
-              <motion.button
-                type="submit"
-                disabled={loading}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all duration-200 disabled:opacity-50"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(0,245,255,0.15), rgba(168,85,247,0.15))',
-                  border: '1px solid rgba(0,245,255,0.3)',
-                  color: '#00f5ff',
-                }}
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {loading ? (
-                  <span className="w-4 h-4 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin" />
-                ) : (
-                  <FiSend size={15} />
-                )}
-                {loading ? 'Sending...' : 'Send Message'}
-              </motion.button>
-            </form>
+                <div>
+                  <label htmlFor="message" className="block text-xs text-slate-500 mb-2 font-medium">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="What's on your mind?"
+                    rows={5}
+                    className="input-field resize-none"
+                    required
+                  />
+                  <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-400 text-xs mt-1" />
+                </div>
+
+                <motion.button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all duration-200 disabled:opacity-50"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(0,245,255,0.15), rgba(168,85,247,0.15))',
+                    border: '1px solid rgba(0,245,255,0.3)',
+                    color: '#00f5ff',
+                  }}
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {state.submitting ? (
+                    <span className="w-4 h-4 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin" />
+                  ) : (
+                    <FiSend size={15} />
+                  )}
+                  {state.submitting ? 'Sending...' : 'Send Message'}
+                </motion.button>
+              </form>
+            )}
           </FadeIn>
         </div>
       </div>

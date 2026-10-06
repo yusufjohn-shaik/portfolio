@@ -10,6 +10,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "@formspree/react": "^3.0.0",
     "@vercel/analytics": "^2.0.1",
     "axios": "^1.7.3",
     "clsx": "^2.1.1",
